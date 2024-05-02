@@ -10,7 +10,6 @@
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Task Board</title>
 </head>
@@ -25,6 +24,55 @@
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
     <!-- Todo: Create a modal with a form to add tasks -->
+    <!--Dialog Box-->
+    <!-- Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <!--Modal Content-->
+        <div class="modal-content">
+          <!--Modal Header-->
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Task</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!--Modal Body-->
+          <div class="modal-body">
+            <form id="form">
+              <div class="row">
+                <!--Task Title Input-->
+                <div class="col-12 col-sm-6">
+                  <label for="task-title">Task Title</label>
+                  <input id="task-title" type="text" class="form-input" name="task-title" />
+                </div>
+                <!--Task Due Date Input-->
+                <div class="col-12 col-sm-6">
+                  <input placeholder="Task Due Date" autocomplete="off" type="text" class="form-control mb-3"
+                    id="taskDueDate" />
+                </div>
+              </div>
+              <!--Task Description Input-->
+              <div class="row">
+                <div class="col-12 col-sm-12">
+                  <label for="task-description">Task Description</label>
+                  <input id="task-description" type="text" class="form-input" name="task-description" />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-custom" id="add-task-button">
+                Add Task
+              </button>
+            </form>
+          </div>
+          <!--Footer of Modal-->
+          <div class="modal-footer">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Dialog Ends Here-->
     <div class="row swim-lanes text-center justify-content-between">
       <div class="col-12 col-lg-4 d-flex">
         <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
@@ -45,16 +93,16 @@
             <div id="in-progress-cards"></div>
           </div>
         </div>
+      </div>
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="done" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">Done</h2>
+          </div>
+          <div class="card-body bg-light">
+            <div id="done-cards"></div>
+          </div>
         </div>
-        <div class="col-12 col-lg-4 d-flex">
-          <div id="done" class="card border-light mb-3 lane flex-grow-1">
-            <div class="card-header bg-white">
-              <h2 class="card-title mb-1">Done</h2>
-            </div>
-            <div class="card-body bg-light">
-              <div id="done-cards"></div>
-          </div>
-          </div>
       </div>
     </div>
   </div>
