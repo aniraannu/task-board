@@ -130,19 +130,22 @@ function handleAddTask(event) {
   taskDateInputEl.val('');
   taskDescriptionInputEl.val('');
 }
+//function to drag the task card from one column to another
 function handleDrop(event, ui) {
   //Read tasks from localStorage
   const tasks = readTasksFromStorage();
+  //get the id of the data card that is being dragged and save it to a variable
   const taskId = ui.draggable[0].dataset.taskId;
-
   const newStatus = event.target.id;
-
+  //iterate to each task infoto set the new status to that particular task
   for (let task of tasks) {
     if (task.id === taskId) {
       task.status = newStatus;
     }
   }
+  //store the task with the the updated status back to the localStorage
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  //print the task back to the screen 
   printTaskData();
 }
 //formButtonEl.on('click', handleAddTask);
