@@ -34,31 +34,26 @@
           <!--Modal Header-->
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Task</h5>
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             </button>
           </div>
           <!--Modal Body-->
           <div class="modal-body">
             <form id="form">
-              <div class="row">
-                <!--Task Title Input-->
-                <div class="col-12 col-sm-6">
-                  <label for="task-title">Task Title</label>
-                  <input id="task-title" type="text" class="form-input" name="task-title" />
-                </div>
-                <!--Task Due Date Input-->
-                <div class="col-12 col-sm-6">
-                  <input placeholder="Task Due Date" autocomplete="off" type="text" class="form-control mb-3"
+              <!--Task Title Input-->
+              <div class="mb-3">
+                <label for="task-title" class="col-form-label">Task Title</label>
+                <input type="text" class="form-control" id="task-title">
+              </div>
+              <!--Task Due Date Input-->
+              <div class="mb-3">
+                <input placeholder="Task Due Date" autocomplete="off" type="text" class="form-control mb-3"
                     id="taskDueDate" />
-                </div>
               </div>
               <!--Task Description Input-->
-              <div class="row">
-                <div class="col-12 col-sm-12">
-                  <label for="task-description">Task Description</label>
-                  <input id="task-description" type="text" class="form-input" name="task-description" />
-                </div>
+              <div class="mb-3">
+                <label for="task-description" class="col-form-label">Task Description</label>
+                <textarea class="form-control" id="task-description"></textarea>
               </div>
               <button type="submit" class="btn btn-custom" id="add-task-button">
                 Add Task
@@ -67,7 +62,6 @@
           </div>
           <!--Footer of Modal-->
           <div class="modal-footer">
-
           </div>
         </div>
       </div>

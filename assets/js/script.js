@@ -1,5 +1,5 @@
 //Grab references to the important DOM elements.
-const projectDisplayEl = $('#project-display');
+const taskDisplayEl = $('#task-display');
 const modalEl = $('#form');
 const formButtonEl = $('#add-task-button');
 const taskNameInputEl = $('#task-title');
@@ -31,7 +31,7 @@ function createTaskCard(task) {
     const cardDeleteBtn = $('<button>')
       .addClass('btn btn-danger delete')
       .text('Delete')
-      .attr('data-project-id', task.id);
+      .attr('data-task-id', task.id);
     cardDeleteBtn.on('click', handleDeleteTask);
   
     // Sets the card background color based on due date. 
@@ -55,17 +55,13 @@ function createTaskCard(task) {
   }
 function printTaskData() {
     const tasks = readTasksFromStorage();
-  
     //Empty existing task cards out of the lanes
     const todoList = $('#todo-cards');
     todoList.empty();
-  
     const inProgressList = $('#in-progress-cards');
     inProgressList.empty();
-  
     const doneList = $('#done-cards');
     doneList.empty();
-  
    // Loop through tasks and create task cards for each status
     for (let task of tasks) {
       if (task.status === 'to-do') {
@@ -77,7 +73,7 @@ function printTaskData() {
       }
     }
   
-    // ? Use JQuery UI to make task cards draggable
+    // Use JQuery UI to make task cards draggable
     $('.draggable').draggable({
       opacity: 0.7,
       zIndex: 100,
@@ -145,13 +141,15 @@ function handleDrop(event, ui) {
         task.status = newStatus;
       }
     }
-    localStorage.setItem('projects', JSON.stringify(tasks));
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     printTaskData();
   }
 //formButtonEl.on('click', handleAddTask);
 modalEl.on('submit', handleAddTask);
-projectDisplayEl.on('click', '.btn-delete-project', handleDeleteTask);
+taskDisplayEl.on('click', '.btn-delete-task', handleDeleteTask);
 $(document).ready(function () {
+  //print task data to the screen on page load
+  printTaskData();
     //Date Picker Widget
     $('#taskDueDate').datepicker({
         changeMonth: true,
