@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Head-->
 
 <head>
   <meta charset="UTF-8" />
@@ -13,13 +14,17 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Task Board</title>
 </head>
+<!--Body-->
 
 <body>
+  <!--Header-->
   <header class="p-4 mb-4 text-center border-bottom border-5">
     <h1 class="display-3">Task Board</h1>
     <p class="lead">A simple Kanban board for task management</p>
   </header>
+  <!--Main Container-->
   <div class="container">
+    <!--Add Task Button-->
     <div class="text-center mb-5">
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
@@ -39,6 +44,7 @@
           </div>
           <!--Modal Body-->
           <div class="modal-body">
+            <!--Form Starts Here-->
             <form id="form">
               <!--Task Title Input-->
               <div class="mb-3">
@@ -48,17 +54,21 @@
               <!--Task Due Date Input-->
               <div class="mb-3">
                 <input placeholder="Task Due Date" autocomplete="off" type="text" class="form-control mb-3"
-                    id="taskDueDate" />
+                  id="taskDueDate" />
               </div>
               <!--Task Description Input-->
               <div class="mb-3">
                 <label for="task-description" class="col-form-label">Task Description</label>
                 <textarea class="form-control" id="task-description"></textarea>
               </div>
-              <button type="submit" class="btn btn-custom" id="add-task-button">
-                Add Task
-              </button>
+              <!--Add Task Button-->
+              <div>
+                <button type="submit" class="btn btn-custom" id="add-task-button">
+                  Add Task
+                </button>
+              </div>
             </form>
+            <!--Form Ends Here-->
           </div>
           <!--Footer of Modal-->
           <div class="modal-footer">
