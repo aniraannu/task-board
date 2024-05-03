@@ -1,6 +1,6 @@
 //Grab references to the important DOM elements.
 const taskDisplayEl = $('#task-display');
-const modalEl = $('#form');
+const modalEl = $('#form');//form elemnt 
 const formButtonEl = $('#add-task-button');
 const taskNameInputEl = $('#task-title');
 const taskDescriptionInputEl = $('#task-description');
@@ -9,6 +9,7 @@ const taskDateInputEl = $('#taskDueDate');
 //Store to local storage
 // Read tasks from local storage and returns array of task objects
 function readTasksFromStorage() {
+  //get the task array from the local storage
   let tasks = JSON.parse(localStorage.getItem('tasks'));
   if (!tasks) {
     tasks = [];
@@ -19,6 +20,7 @@ function readTasksFromStorage() {
 function saveTasksToStorage(tasks) {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+//create a function to create a task card
 // Creates a task card from the user inputs
 function createTaskCard(task) {
   const taskCard = $('<div>')
@@ -52,7 +54,8 @@ function createTaskCard(task) {
   //Return the card so it can be appended to the correct lane.
   return taskCard;
 }
-//read the tasks stored in the localStorage and 
+//create a function to render the task list and make cards draggable
+//read the tasks stored in the localStorage and print it to the screen
 function printTaskData() {
   const tasks = readTasksFromStorage();
   //Empty existing task cards out of the lanes
@@ -86,6 +89,7 @@ function printTaskData() {
     },
   });
 }
+//create a function to handle deleting a task
 // Removes a project from local storage and prints the project data back to the page
 function handleDeleteTask() {
   const taskId = $(this).attr('data-task-id');
@@ -130,6 +134,7 @@ function handleAddTask(event) {
   taskDateInputEl.val('');
   taskDescriptionInputEl.val('');
 }
+//create a function to handle dropping a task into a new status lane
 //function to drag the task card from one column to another
 function handleDrop(event, ui) {
   //Read tasks from localStorage
@@ -149,8 +154,11 @@ function handleDrop(event, ui) {
   printTaskData();
 }
 //formButtonEl.on('click', handleAddTask);
+//Call the Add Task function when the Modal form is submitted
 modalEl.on('submit', handleAddTask);
+//call the delete task button when the display elemnt is on
 taskDisplayEl.on('click', '.btn-delete-task', handleDeleteTask);
+//when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
   //print task data to the screen on page load
   printTaskData();
