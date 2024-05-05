@@ -14,3 +14,19 @@ body {
 .task-card:hover {
   cursor: grab;
 }
+/*Add Task Button*/
+.btn-custom {
+  background-color: var(--darkblue);
+  color: var(--light);
+}
+.btn-custom:hover {
+  color: var(--lightblue);
+}
+/* style project rows based on status (late, due today) */
+.project-late {
+  background-color: var(--lightred);
+}
+
+.project-today {
+  background-color: var(--lightyellow);
+}
