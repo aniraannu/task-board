@@ -12,7 +12,7 @@ The following animation demonstrates the application functionality:
 ## Getting Started
 The application can be simply accesed using the link of the GitHub Pages. The following image demonstrates the web application's appearance:
 
-![Image of the completed Application.](./Assets/images/taskboard-screenshot.png)
+![Image of the completed Application.](./assets/images/taskboard-screenshot.png)
 
 A modal form opnes up by clicking the Add Task button on the page where user can input the task details like title,due date and description. The modal form looks like the following image:
 
