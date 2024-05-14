@@ -95,11 +95,13 @@ function handleDeleteTask() {
   const taskId = $(this).attr('data-task-id');
   //get the tasks stored in the local storage and asign it to a variable
   const tasks = readTasksFromStorage();
+  console.log(`taskId`, taskId);
   // Remove task from the array
   tasks.forEach((task) => {
     //check the id of the task in the array matches the task id that is being removed
-    if (task.id === taskId) {
+    if (task.id === parseInt(taskId)) {
       tasks.splice(tasks.indexOf(task), 1);
+
     }
   });
   //Save remaining tasks back to the localStorage
@@ -116,19 +118,24 @@ function handleAddTask(event) {
   const taskDate = taskDateInputEl.val();
   const taskDescription = taskDescriptionInputEl.val();
   //Define the new task as a array and set the status to 'to-do'
-  const newTask = {
-    name: taskName,
-    description: taskDescription,
-    dueDate: taskDate,
-    status: 'to-do',
-  };
-  //Pull the tasks from localStorage and push the new task to the array
-  const tasks = readTasksFromStorage();
-  tasks.push(newTask);
-  // Save the updated tasks array to localStorage
-  saveTasksToStorage(tasks);
-  // Print task data back to the screen
-  printTaskData();
+  if (taskName.length >0 && taskDate.length>0 && taskDescription.length>0) {
+    const newTask = {
+      name: taskName,
+      description: taskDescription,
+      dueDate: taskDate,
+      status: 'to-do',
+      id: Math.floor(Math.random() * 10009)
+    };
+    //Pull the tasks from localStorage and push the new task to the array
+    const tasks = readTasksFromStorage();
+    tasks.push(newTask);
+    // Save the updated tasks array to localStorage
+    saveTasksToStorage(tasks);
+    // Print task data back to the screen
+    printTaskData();
+  } else {
+    alert("No empty fields")
+  }
   //Clear the form inputs
   taskNameInputEl.val('');
   taskDateInputEl.val('');
@@ -142,9 +149,10 @@ function handleDrop(event, ui) {
   //get the id of the data card that is being dragged and save it to a variable
   const taskId = ui.draggable[0].dataset.taskId;
   const newStatus = event.target.id;
-  //iterate to each task infoto set the new status to that particular task
+  console.log("handle drop", newStatus, taskId, ui.draggable[0].dataset.taskId, ui.draggable[0].dataset)
+  //iterate to each task info to set the new status to that particular task
   for (let task of tasks) {
-    if (task.id === taskId) {
+    if (task.id === parseInt(taskId)) {
       task.status = newStatus;
     }
   }
